@@ -1,0 +1,115 @@
+/* Container for the landing page */
+.landing-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f0f4f9;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Heading styles */
+.landing-page-container h1 {
+    font-size: 3.5em; /* Increased size */
+    margin-bottom: 20px;
+    color: #333;
+    animation: moveText 2s linear infinite; /* Faster animation for text */
+}
+
+@keyframes moveText {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+    100% { transform: translateX(0); }
+}
+
+/* Image styles */
+.landing-page-container img {
+    width: 300px; /* Increased size */
+    height: auto;
+    margin-bottom: 40px;
+    animation: bounce 1s infinite; /* Faster animation for image */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Button styles */
+.landing-page-container button {
+    padding: 20px 40px; /* Increased padding */
+    font-size: 1.6em; /* Increased size */
+    background-color: #4b90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover */
+    position: relative;
+    overflow: hidden;
+}
+
+.landing-page-container button:hover {
+    background-color: #357ae8;
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+.landing-page-container button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+    border-radius: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+}
+
+.landing-page-container button:active::after {
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+}
+
+/* Responsive styles for tablets and larger devices */
+@media (min-width: 600px) {
+    .landing-page-container h1 {
+        font-size: 4em; /* Increased size for larger screens */
+    }
+    .landing-page-container img {
+        width: 350px; /* Adjusted size for larger screens */
+    }
+    .landing-page-container button {
+        font-size: 1.8em; /* Increased size */
+        padding: 25px 50px; /* Increased padding */
+    }
+}
+
+/* Responsive styles for laptops and larger devices */
+@media (min-width: 992px) {
+    .landing-page-container h1 {
+        font-size: 4.5em; /* Increased size for larger screens */
+    }
+    .landing-page-container img {
+        width: 400px; /* Adjusted size for larger screens */
+    }
+    .landing-page-container button {
+        font-size: 2em; /* Increased size */
+        padding: 30px 60px; /* Increased padding */
+    }
+}
