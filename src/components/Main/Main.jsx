@@ -3,17 +3,24 @@ import './Main.css';
 import { assets } from '../../assets/assets';
 import { Context } from '../../context/context';
 import UserModal from './UserModal';
+import ActivityModal from '../Activity/ActivityModal';
 
 export function Main() {
     const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useContext(Context);
-    const [showModal, setShowModal] = useState(false);
+    const [showUserModal, setShowUserModal] = useState(false);
+    const [showActivityModal, setShowActivityModal] = useState(false);
 
     const handleUserIconClick = () => {
-        setShowModal(true);
+        setShowUserModal(true);
+    };
+
+    const handleActivityClick = () => {
+        setShowActivityModal(true);
     };
 
     const handleCloseModal = () => {
-        setShowModal(false);
+        setShowUserModal(false);
+        setShowActivityModal(false);
     };
 
     const handleExit = () => {
@@ -24,7 +31,10 @@ export function Main() {
         <div className='main'>
             <div className='nav'>
                 <p>Cosmo Chat</p>
-                <img src={assets.user_icon} alt='User Icon' className='user-icon' onClick={handleUserIconClick} />
+                <div className='icons'>
+                    <img src={assets.activity_icon} alt='Activity Icon' className='activity-icon' onClick={handleActivityClick} />
+                    <img src={assets.user_icon} alt='User Icon' className='user-icon' onClick={handleUserIconClick} />
+                </div>
             </div>
             <div className='main-container'>
                 {!showResult ? (
@@ -84,7 +94,8 @@ export function Main() {
                     </div>
                 </div>
             </div>
-            <UserModal show={showModal} onClose={handleCloseModal} onExit={handleExit} />
+            <UserModal show={showUserModal} onClose={handleCloseModal} onExit={handleExit} />
+            <ActivityModal show={showActivityModal} onClose={handleCloseModal} />
         </div>
     );
 }

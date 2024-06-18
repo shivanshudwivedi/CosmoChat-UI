@@ -10,17 +10,22 @@ const ContextProvider = ({ children }) => {
     const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
     const [resultData, setResultData] = useState("");
+    const [chatCount, setChatCount] = useState(0);
 
     useEffect(() => {
-        // Retrieve previous prompts from localStorage if they exist
+        // Retrieve previous prompts and chat data from localStorage if they exist
         const storedPrompts = JSON.parse(localStorage.getItem('previousPrompts')) || [];
         setPreviousPrompts(storedPrompts);
+
+        const storedChatCount = JSON.parse(localStorage.getItem('chatCount')) || 0;
+        setChatCount(storedChatCount);
     }, []);
 
     useEffect(() => {
-        // Store previous prompts in localStorage
+        // Store previous prompts and chat data in localStorage
         localStorage.setItem('previousPrompts', JSON.stringify(previousPrompts));
-    }, [previousPrompts]);
+        localStorage.setItem('chatCount', JSON.stringify(chatCount));
+    }, [previousPrompts, chatCount]);
 
     const delayPara = (index, nextWord) => {
         setTimeout(() => {
@@ -68,6 +73,14 @@ const ContextProvider = ({ children }) => {
             words.forEach((word, index) => {
                 delayPara(index, word + " ");
             });
+
+            // Increment chat count and store in localStorage
+            setChatCount(prevCount => {
+                const newCount = prevCount + 1;
+                const chatData = JSON.parse(localStorage.getItem('chatData')) || [];
+                localStorage.setItem('chatData', JSON.stringify([...chatData, { chats: newCount }]));
+                return newCount;
+            });
         } else {
             console.error("No response from API or response is undefined.");
         }
@@ -87,7 +100,8 @@ const ContextProvider = ({ children }) => {
         loading,
         resultData,
         recentPrompt,
-        newChat
+        newChat,
+        chatCount
     };
 
     return (

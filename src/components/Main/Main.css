@@ -210,3 +210,24 @@
     height: 100px; /* Ensuring aspect ratio is maintained */
     border-radius: 70%;
 }
+
+.main .nav .icons {
+    display: flex;
+    align-items: center;
+    gap : 30px;
+}
+
+.main .nav .activity-icon,
+.main .nav .user-icon {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    border-radius: 50%;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.main .nav .activity-icon:hover,
+.main .nav .user-icon:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
