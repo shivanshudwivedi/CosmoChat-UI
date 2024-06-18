@@ -29,6 +29,7 @@ CosmoChat is an interactive chat application that leverages the power of Gemini 
   - React
   - CSS3
   - Semantic UI
+  - Material UI
 
 - **Backend:**
   - Node.js
