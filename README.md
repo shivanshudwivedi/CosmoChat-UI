@@ -3,6 +3,10 @@
 
 CosmoChat is an interactive chat application that leverages the power of Gemini AI to provide users with intelligent and engaging conversations. The application features a landing page with a "Start Chat" button, which transitions to the chat interface. Users can interact with the chatbot and access user details through a modal dialog.
 
+## Explanation & working demonstration 
+
+https://www.tella.tv/video/shivanshus-video-hu5k 
+
 ## Table of Contents
 
 - [Features](#features)
